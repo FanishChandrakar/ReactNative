@@ -24,7 +24,7 @@ import {
 
 import styles from './style'
 
-const Demo: () => React$Node = () => {
+const Demo = () => {
     return (
         <>
             <StatusBar barStyle="dark-content" />
