@@ -5,9 +5,10 @@ import Navigation from './navigation'
 
 import { connect } from 'react-redux';
 import { } from './redux/actions';
+import styles from './styles';
 
-const Main = (props) => {
-    console.log("Main==>", { props })
+function Main(props) {
+    console.log("Main==>", { props, styles })
     return (
         <>
             <Navigation />

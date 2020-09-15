@@ -5,7 +5,7 @@ import { textColor, whiteColor, appBackColor } from '../colors';
 const fontScale = 0.9
 const _getSize = (value) => value * ratio * fontScale
 
-export default Styles = StyleSheet.create({
+export default StyleSheet.create({
     Container: {
         height,
         width,

@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Text, View, Button, BackHandler, Alert } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { connect } from 'react-redux';
-import { } from '../redux/actions';
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -46,41 +43,54 @@ function CustomDrawer({ navigation }) {
 }
 
 function TabScreen({ navigation }) {
+    let TabList = [
+        {
+            name: 'Home',
+            component: DemoScreen,
+            // function:()=>null,
+            activeIcon: 'home-sharp',
+            deactiveIcon: 'home-outline',
+        },
+        {
+            name: 'Settings',
+            component: SettingsScreen,
+            // function:()=>null,
+            activeIcon: 'options-sharp',
+            deactiveIcon: 'options-outline',
+        },
+        {
+            name: 'Bookmark',
+            // component: null,
+            function: () => navigation.navigate('Details'),
+            activeIcon: 'bookmark-sharp',
+            deactiveIcon: 'bookmark-outline',
+        },
+    ]
+        .map((item, index) =>
+            item.function ?
+                <Tab.Screen key={`${index}`} name={item.name} getComponent={() => <></>}
+                    listeners={({ navigation, route }) => ({
+                        tabPress: event => {
+                            event.preventDefault()
+                            item.function()
+                        },
+                    })}
+                    options={{
+                        tabBarIcon: ({ focused, color, size }) =>
+                            <Ionicons name={focused ? item.activeIcon : item.deactiveIcon} size={size} color={color} />
+                    }} />
+                :
+                <Tab.Screen key={`${index}`} name={item.name} component={item.component} options={{
+                    tabBarIcon: ({ focused, color, size }) => <Ionicons name={focused ? item.activeIcon : item.deactiveIcon} size={size} color={color} />
+                }} />
+        )
+
     return (
-        <Tab.Navigator
-            backBehavior="initialRoute"
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconName;
-
-                    if (route.name === 'Home') {
-                        iconName = focused ? 'home-sharp' : 'home-outline';
-                    } else if (route.name === 'Settings') {
-                        iconName = focused ? 'options' : 'options-outline';
-                    } else if (route.name === 'Bookmark') {
-                        iconName = focused ? 'bookmark' : 'bookmark-outline';
-                    }
-
-                    // You can return any component that you like here!
-                    return <Ionicons name={iconName} size={size} color={color} />;
-                },
-            })}
-            tabBarOptions={{
-                showLabel: false,
-                activeTintColor: 'lightblue',
-                inactiveTintColor: 'gray',
-            }}
-        >
-            <Tab.Screen name="Home" component={DemoScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-            <Tab.Screen name="Bookmark" getComponent={() => <></>}
-                listeners={({ navigation, route }) => ({
-                    tabPress: e => {
-                        e.preventDefault()
-                        navigation.navigate('Details')
-                    },
-                })} />
-        </Tab.Navigator>
+        <Tab.Navigator children={TabList} tabBarOptions={{
+            showLabel: false,
+            activeTintColor: 'lightblue',
+            inactiveTintColor: 'gray',
+        }} />
     );
 }
 

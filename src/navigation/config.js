@@ -47,24 +47,17 @@ class Container extends Component {
             return false
     }
 
-    _onStateChange = (state) => {
-        console.log('_onStateChange==>', { state })
-        this._currentState = state.index
-    }
+    _onStateChange = (state) => this._currentState = state.index
 
     render() {
         let { props } = this
-        console.log('Navigation==>', { props })
-        return (
-            <NavigationContainer onStateChange={this._onStateChange}>
-                {props.children}
-            </NavigationContainer>
-        )
+        // console.log('Navigation==>', { props })
+        return <NavigationContainer children={props.children} onStateChange={this._onStateChange} />
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps==>', { state })
+    // console.log('mapStateToProps==>', { state })
 
     return {
         ...state,
