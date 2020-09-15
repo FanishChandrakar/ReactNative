@@ -23,6 +23,8 @@
     │    │    ├── organisms
     │    │
     │    ├── navigations
+    │    │    ├── config.js
+    │    │
     │    ├── redux
     │    │    ├── action
     │    │    │    ├── actionType.js
