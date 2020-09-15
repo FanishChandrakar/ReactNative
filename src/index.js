@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { SafeAreaView } from 'react-native'
 
 import Navigation from './navigation'
 
@@ -9,9 +9,9 @@ import { } from './redux/actions';
 const Main = (props) => {
     console.log("Main==>", { props })
     return (
-        <View style={{ flex: 1 }}>
+        <>
             <Navigation />
-        </View>
+        </>
     )
 }
 

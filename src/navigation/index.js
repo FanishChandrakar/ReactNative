@@ -5,12 +5,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { } from '../redux/actions';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { PlatformAndroid } from '../utils';
+import RootNavigator from './config';
 import { DemoScreen } from '../screens';
 
 
@@ -22,10 +21,6 @@ function SettingsScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>SettingsScreen</Text>
-            <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details')}
-            />
         </View>
     );
 }
@@ -50,19 +45,20 @@ function CustomDrawer({ navigation }) {
     );
 }
 
-function TabScreen() {
+function TabScreen({ navigation }) {
     return (
         <Tab.Navigator
+            backBehavior="initialRoute"
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
                     if (route.name === 'Home') {
-                        iconName = focused
-                            ? 'ios-information-circle'
-                            : 'ios-information-circle-outline';
+                        iconName = focused ? 'home-sharp' : 'home-outline';
                     } else if (route.name === 'Settings') {
-                        iconName = focused ? 'construct' : 'construct-outline';
+                        iconName = focused ? 'options' : 'options-outline';
+                    } else if (route.name === 'Bookmark') {
+                        iconName = focused ? 'bookmark' : 'bookmark-outline';
                     }
 
                     // You can return any component that you like here!
@@ -70,12 +66,20 @@ function TabScreen() {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: 'tomato',
+                showLabel: false,
+                activeTintColor: 'lightblue',
                 inactiveTintColor: 'gray',
             }}
         >
             <Tab.Screen name="Home" component={DemoScreen} />
             <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Bookmark" getComponent={() => <></>}
+                listeners={({ navigation, route }) => ({
+                    tabPress: e => {
+                        e.preventDefault()
+                        navigation.navigate('Details')
+                    },
+                })} />
         </Tab.Navigator>
     );
 }
@@ -88,77 +92,15 @@ function MyDrawer() {
     );
 }
 
-class Navigation extends Component {
-    constructor(props) {
-        super(props)
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-        this._currentState = 0
-    }
-
-    componentDidMount() {
-        if (PlatformAndroid) {
-            BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
-        }
-    }
-
-    componentWillUnmount() {
-        if (PlatformAndroid) {
-            BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-        }
-    }
-
-    handleBackButtonClick() {
-        if (this._currentState == 0) {
-            Alert.alert(
-                'Exit !!!',
-                'Are you sure you want to exit.',
-                [
-                    {
-                        text: 'Cancel',
-                        onPress: () => null,
-                        style: 'cancel',
-                    },
-                    { text: 'OK', onPress: () => BackHandler.exitApp() },
-                ],
-                { cancelable: false },
-            );
-            return true
-        }
-        else
-            return false
-    }
-
-    _onStateChange = (state) => {
-        console.log('_onStateChange==>', { state })
-        this._currentState = state.index
-    }
-
-    render() {
-        let { props } = this
-        console.log('Navigation==>', { props })
-        return (
-            <NavigationContainer onStateChange={this._onStateChange}>
-                <Stack.Navigator
-                    initialRouteName="Drawer"
-                    headerMode="none">
-                    <Stack.Screen name="Drawer" component={MyDrawer} />
-                    <Stack.Screen name="Details" component={DetailsScreen} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        )
-    }
+export default () => {
+    return (
+        <RootNavigator>
+            <Stack.Navigator
+                initialRouteName="Drawer"
+                headerMode="none">
+                <Stack.Screen name="Drawer" component={MyDrawer} />
+                <Stack.Screen name="Details" component={DetailsScreen} />
+            </Stack.Navigator>
+        </RootNavigator>
+    )
 }
-
-const mapStateToProps = (state) => {
-    console.log('mapStateToProps==>', { state })
-
-    return {
-        ...state,
-    }
-}
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
