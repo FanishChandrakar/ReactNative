@@ -23,10 +23,6 @@
     │    │    ├── organisms
     │    │
     │    ├── navigations
-    │    │    ├── drawer.js
-    │    │    ├── stack.js
-    │    │    ├── tab.js
-    │    │
     │    ├── redux
     │    │    ├── action
     │    │    │    ├── actionType.js
