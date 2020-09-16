@@ -1,4 +1,4 @@
-import { type_App_Loading } from '../actions/actionType';
+import { type_App_Loading } from '../Actions/actionType';
 
 const initialState = {
     loading: false

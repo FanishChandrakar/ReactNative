@@ -22,7 +22,7 @@ import {
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import styles from './style'
+import Style from './Style'
 
 const Demo = () => {
     return (
@@ -31,36 +31,36 @@ const Demo = () => {
             <SafeAreaView>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic"
-                    style={{ ...styles.scrollView }}>
+                    style={{ ...Style.scrollView }}>
                     <Header />
                     {global.HermesInternal == null ? null : (
-                        <View style={{ ...styles.engine }}>
-                            <Text style={{ ...styles.footer }}>Engine: Hermes</Text>
+                        <View style={{ ...Style.engine }}>
+                            <Text style={{ ...Style.footer }}>Engine: Hermes</Text>
                         </View>
                     )}
-                    <View style={{ ...styles.body }}>
-                        <View style={{ ...styles.sectionContainer }}>
-                            <Text style={{ ...styles.sectionTitle }}>Step One</Text>
-                            <Text style={{ ...styles.sectionDescription }}>
-                                Edit <Text style={{ ...styles.highlight }}>App.js</Text> to change this
+                    <View style={{ ...Style.body }}>
+                        <View style={{ ...Style.sectionContainer }}>
+                            <Text style={{ ...Style.sectionTitle }}>Step One</Text>
+                            <Text style={{ ...Style.sectionDescription }}>
+                                Edit <Text style={{ ...Style.highlight }}>App.js</Text> to change this
                                 screen and then come back to see your edits.
                             </Text>
                         </View>
-                        <View style={{ ...styles.sectionContainer }}>
-                            <Text style={{ ...styles.sectionTitle }}>See Your Changes</Text>
-                            <Text style={{ ...styles.sectionDescription }}>
+                        <View style={{ ...Style.sectionContainer }}>
+                            <Text style={{ ...Style.sectionTitle }}>See Your Changes</Text>
+                            <Text style={{ ...Style.sectionDescription }}>
                                 <ReloadInstructions />
                             </Text>
                         </View>
-                        <View style={{ ...styles.sectionContainer }}>
-                            <Text style={{ ...styles.sectionTitle }}>Debug</Text>
-                            <Text style={{ ...styles.sectionDescription }}>
+                        <View style={{ ...Style.sectionContainer }}>
+                            <Text style={{ ...Style.sectionTitle }}>Debug</Text>
+                            <Text style={{ ...Style.sectionDescription }}>
                                 <DebugInstructions />
                             </Text>
                         </View>
-                        <View style={{ ...styles.sectionContainer }}>
-                            <Text style={{ ...styles.sectionTitle }}>Learn More</Text>
-                            <Text style={{ ...styles.sectionDescription }}>
+                        <View style={{ ...Style.sectionContainer }}>
+                            <Text style={{ ...Style.sectionTitle }}>Learn More</Text>
+                            <Text style={{ ...Style.sectionDescription }}>
                                 Read the docs to discover what to do next:
                             </Text>
                         </View>

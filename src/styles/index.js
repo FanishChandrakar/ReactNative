@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { ratio, width, height } from '../utils';
-import { textColor, whiteColor, appBackColor } from '../colors';
+import { ratio, width, height } from '../Utils';
+import { textColor, whiteColor, appBackColor } from '../Colors';
 
 const fontScale = 0.9
 const _getSize = (value) => value * ratio * fontScale

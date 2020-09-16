@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { BackHandler, Alert } from 'react-native'
 
 import { connect } from 'react-redux';
-import { } from '../redux/actions';
+import { } from '../Redux/Actions';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { PlatformAndroid } from '../utils';
+import { PlatformAndroid } from '../Utils';
 
 class Container extends Component {
     constructor(props) {

@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import RootNavigator from './config';
-import { DemoScreen } from '../screens';
+import { DemoScreen } from '../Screens';
 
 
 const Stack = createStackNavigator();
@@ -42,7 +42,15 @@ function CustomDrawer({ navigation }) {
     );
 }
 
-function TabScreen({ navigation }) {
+function ScreenDrawer({ navigation }) {
+    return (
+        <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />}>
+            <Drawer.Screen name="Home" component={ScreenTab} />
+        </Drawer.Navigator>
+    );
+}
+
+function ScreenTab({ navigation }) {
     let TabList = [
         {
             name: 'Home',
@@ -94,23 +102,19 @@ function TabScreen({ navigation }) {
     );
 }
 
-function MyDrawer() {
+function ScreenStack({ navigation }) {
     return (
-        <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />}>
-            <Drawer.Screen name="Home" component={TabScreen} />
-        </Drawer.Navigator>
-    );
-}
-
-export default () => {
-    return (
-        <RootNavigator>
-            <Stack.Navigator
-                initialRouteName="Drawer"
-                headerMode="none">
-                <Stack.Screen name="Drawer" component={MyDrawer} />
-                <Stack.Screen name="Details" component={DetailsScreen} />
-            </Stack.Navigator>
-        </RootNavigator>
+        <Stack.Navigator
+            initialRouteName="Drawer"
+            headerMode="none"
+        >
+            <Stack.Screen name="Drawer" component={ScreenDrawer} />
+            <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
     )
 }
+
+export default () =>
+    <RootNavigator>
+        <ScreenStack />
+    </RootNavigator>

@@ -1,14 +1,14 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 
-import Navigation from './navigation'
+import Navigation from './Navigation'
 
 import { connect } from 'react-redux';
-import { } from './redux/actions';
-import styles from './styles';
+import { } from './Redux/Actions';
+import Styles from './Styles';
 
 function Main(props) {
-    console.log("Main==>", { props, styles })
+    console.log("Main==>", { props, Styles })
     return (
         <>
             <Navigation />
