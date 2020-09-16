@@ -9,32 +9,31 @@
     ├── index.js
     ├── app.js
     ├── src
-    │    ├── assets
-    │    │    ├── fonts
-    │    │    ├── images
+    │    ├── Assets
+    │    │    ├── Fonts
+    │    │    ├── Images
     │    │
-    │    ├── axios
+    │    ├── Axios
     │    │    ├── config.js
     │    │
-    │    ├── colors
-    │    ├── components
-    │    │    ├── atoms
-    │    │    ├── molecules
-    │    │    ├── organisms
+    │    ├── Components
+    │    │    ├── Atoms
+    │    │    ├── Molecules
+    │    │    ├── Organisms
     │    │
-    │    ├── navigations
+    │    ├── Navigations
     │    │    ├── config.js
     │    │
-    │    ├── redux
-    │    │    ├── action
+    │    ├── Redux
+    │    │    ├── Action
     │    │    │    ├── actionType.js
     │    │    │
-    │    │    ├── reducers
-    │    │    ├── store
+    │    │    ├── Reducers
+    │    │    ├── Store
     │    │
-    │    ├── screens
-    │    ├── styles
-    │    ├── utils
+    │    ├── Screens
+    │    ├── Styles
+    │    ├── Utils
     │    ├── index.js
 ```
 
