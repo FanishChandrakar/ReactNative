@@ -1,3 +1,5 @@
 // export * from '<path>'
 // export { default as <name> } from '<path>'
-export { default as DemoScreen } from './Demo'
+export { default as Demo } from './Demo'
+export { default as Templete } from './Templete'
+export { default as Settings } from './Settings'

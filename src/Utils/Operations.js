@@ -1,5 +1,7 @@
 import { Linking } from 'react-native';
+import { ratio } from './Dimensions';
 
+export const getScale = (value) => value * ratio
 
 export const linkURL = (url) => {
     Linking.canOpenURL(url)
