@@ -4,7 +4,7 @@ import { BackHandler, Alert } from 'react-native'
 import { connect } from 'react-redux';
 import { } from '../Redux/Actions';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { PlatformAndroid } from '../Utils';
 
 class Container extends Component {
@@ -52,15 +52,16 @@ class Container extends Component {
     render() {
         let { props } = this
         // console.log('Navigation==>', { props })
-        return <NavigationContainer children={props.children} onStateChange={this._onStateChange} />
+        return <NavigationContainer theme={props.isDark ? DarkTheme : DefaultTheme} children={props.children} onStateChange={this._onStateChange} />
     }
 }
 
 const mapStateToProps = (state) => {
-    // console.log('mapStateToProps==>', { state })
+    console.log('mapStateToProps==>', { state })
 
     return {
-        ...state,
+        // ...state,
+        isDark: state.AppData.theme === 'dark'
     }
 }
 

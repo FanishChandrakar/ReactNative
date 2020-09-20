@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import {  View } from 'react-native'
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { } from '../Screens';
 
 import Tabs from './Tabs';
+import { Text } from '../Components';
 
 
 const Drawer = createDrawerNavigator();

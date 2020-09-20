@@ -1,5 +1,8 @@
 import { Linking } from 'react-native';
 import { ratio } from './Dimensions';
+import Store from '../Redux/Store';
+
+export const getTheme = () => Store.getState().AppData.theme
 
 export const getScale = (value) => value * ratio
 
