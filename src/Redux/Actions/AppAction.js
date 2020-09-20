@@ -1,11 +1,19 @@
-import { type_App_Loading } from './actionType'
+import { type_App_Loading, type_App_Theme } from './actionType'
 
 const setAppLoading = () => {
-    return async (dispatch , getState) => {
-            dispatch({
-                type: type_App_Loading,
-            });
+    return async (dispatch, getState) => {
+        dispatch({
+            type: type_App_Loading,
+        });
     }
 }
 
-export { setAppLoading }
+const setAppTheme = () => {
+    return async (dispatch, getState) => {
+        dispatch({
+            type: type_App_Theme,
+        });
+    }
+}
+
+export { setAppLoading, setAppTheme }

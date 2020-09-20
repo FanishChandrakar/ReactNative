@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Demo, Settings } from '../Screens';
+import { appColor } from '../Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,8 +55,9 @@ export default ({ navigation }) => {
     return (
         <Tab.Navigator children={TabList} tabBarOptions={{
             showLabel: false,
-            activeTintColor: 'lightblue',
+            activeTintColor: appColor,
             inactiveTintColor: 'gray',
+            style: {}
         }} />
     );
 }

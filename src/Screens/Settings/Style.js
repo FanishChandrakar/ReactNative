@@ -16,5 +16,8 @@ export default StyleSheet.create({
     center: {
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    text: {
+        ...Styles.T5
     }
 })

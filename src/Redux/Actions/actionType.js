@@ -3,3 +3,4 @@
 // export const type_<name>_Failuer = 'type_<name>_Failuer';
 
 export const type_App_Loading = 'type_App_Loading';
+export const type_App_Theme = 'type_App_Theme';
